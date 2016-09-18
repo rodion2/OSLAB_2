@@ -1,6 +1,5 @@
-#define BOOST_TEST_MODULE first_iteration
-
-#include <boost\test\included\unit_test.hpp>
+#define BOOST_TEST_MODULE nw-math-test
+#include <boost/test/included/unit_test.hpp>
 #include "mmemory.h"
 
 void init_manager(int n, size_t pageSize){
@@ -62,7 +61,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_in_two_pages){
 	BOOST_CHECK_EQUAL(0, err);
 
 	char *writen_block = "block size = 15";
-	int err = _write(*block, writen_block, 15);
+	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 
 	char *readen_block;
@@ -80,7 +79,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_in_to_small_block){
 	BOOST_CHECK_EQUAL(0, err);
 
 	char *writen_block = "block size = 15";
-	int err = _write(*block, writen_block, 15);
+	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(-2, err);
 }
 
@@ -93,7 +92,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_not_in_block_beginning){
 
 	block += 5;
 	char *writen_block = "block size = 15";
-	int err = _write(*block, writen_block, 15);
+	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 
 	char *readen_block;
@@ -111,7 +110,7 @@ BOOST_AUTO_TEST_CASE(write_int_block){
 	BOOST_CHECK_EQUAL(0, err);
 
 	block += 5;
-	int *writen_block = new int[]{1, 2, 3, 4, 5};
+	int *writen_block = new int[5]{1, 2, 3, 4, 5};
 	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 

@@ -1,15 +1,12 @@
-cmake_minimum_required(VERSION 3.6)
-project(OSLab_2)
+project(neirons-network)
+cmake_minimum_required(VERSION 2.8)
 
-set(BOOST_LIBRARYDIR  /usr/include/boost)
-set(Boost_DEBUG        ON)
-set(Boost_USE_STATIC_LIBS        ON)
-set(Boost_USE_MULTITHREADED      ON)
+set(CMAKE_C_FLAGS "-Wwrite-strings")
+add_definitions(-Wwrite-strings)
 
-find_package(Boost 1.54.0 COMPONENTS test REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
+set(CMAKE_CXX_FLAGS "-Wwrite-strings")
 
-set(SOURCE_FILES first_iteration_unit_tests.cpp mmemory.h)
-add_executable(OSLab_2 ${SOURCE_FILES})
+add_subdirectory(test test)
+add_subdirectory(lib ./lib)
 
-target_link_libraries(OSLab_2 ${Boost_INCLUDE_DIRS})
+
