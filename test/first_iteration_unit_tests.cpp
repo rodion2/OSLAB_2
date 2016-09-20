@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(write_char_block){
 	int err = _malloc(block, 18);
 	BOOST_CHECK_EQUAL(0, err);
 
-	char *writen_block = "block size = 15";
+	char *writen_block = "segment size = 15";
 	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_in_two_pages){
 	int err = _malloc(block, 18);
 	BOOST_CHECK_EQUAL(0, err);
 
-	char *writen_block = "block size = 15";
+	char *writen_block = "segment size = 15";
 	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 
@@ -78,7 +78,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_in_to_small_block){
 	int err = _malloc(block, 7);
 	BOOST_CHECK_EQUAL(0, err);
 
-	char *writen_block = "block size = 15";
+	char *writen_block = "segment size = 15";
 	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(-2, err);
 }
@@ -91,7 +91,7 @@ BOOST_AUTO_TEST_CASE(write_char_block_not_in_block_beginning){
 	BOOST_CHECK_EQUAL(0, err);
 
 	block += 5;
-	char *writen_block = "block size = 15";
+	char *writen_block = "segment size = 15";
 	err = _write(*block, writen_block, 15);
 	BOOST_CHECK_EQUAL(0, err);
 
