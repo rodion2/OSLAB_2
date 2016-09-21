@@ -1,4 +1,5 @@
 #include "mmemory.h"
+#include "stdlib.h"
 
 #define TRUE            1
 #define FALSE            0
@@ -44,6 +45,8 @@ int sizePage = 0;
 VA allocbuf;
 
 int _malloc(VA *ptr, size_t szBlock) {
+    ptr = (char**)malloc(szBlock);
+    if (ptr == NULL) return 
     return -1;
 }
 
